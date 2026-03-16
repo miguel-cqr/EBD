@@ -1,6 +1,6 @@
-# Benchmark de Estructuras de Datos — Búsqueda de Estudiantes
+# Comparación de Estructuras de Datos para Busquedas Aleatorias
 
-Proyecto académico que compara el rendimiento de búsqueda entre tres estructuras de datos sobre un conjunto de 10,000 estudiantes generados en memoria. Se analiza cómo el orden de inserción (IDs secuenciales vs. aleatorios) afecta el tiempo de búsqueda en cada estructura.
+Proyecto que compara el rendimiento de búsqueda entre tres estructuras de datos sobre un conjunto de 10,000 estudiantes generados en memoria. Se analiza cómo el orden de inserción (IDs secuenciales vs. aleatorios) afecta el tiempo de búsqueda en cada estructura.
 
 ---
 
@@ -19,7 +19,7 @@ Proyecto académico que compara el rendimiento de búsqueda entre tres estructur
 ## Archivos del proyecto
 
 ```
-├── ejercicioArboless.py   # Código principal: generación de datos, estructuras y benchmark
+├── ejercicioArboles.py   # Código principal: generación de datos, estructuras y benchmark
 └── README.md
 ```
 
@@ -46,7 +46,7 @@ cd EBD/Arboles
 2. Ejecuta el script:
 
 ```bash
-python ejercicioArboless.py
+python ejercicioArboles.py
 ```
 
 El programa genera los datos, construye las tres estructuras y corre cuatro rondas de benchmarks. Presiona **Enter** para avanzar entre rondas.
