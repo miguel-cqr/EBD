@@ -259,7 +259,7 @@ if __name__ == "__main__":
 
     # Problema 1
     hash_1 = "d073dd6208f76179423b603e44fd2f5e5cd82b8507dac3ba2ceb2b3de3300cff" #Hash a encontrar dependiendo de la secuencia de numeros
-    print(f"Demo Problema 11 →  hash: {demo_hash_1}")
+    print(f"Demo Problema 11 →  hash: {hash_1}")
     buscar_secuencia_digitos(hash_1)
  
     # Problema 2
