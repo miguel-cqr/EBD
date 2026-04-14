@@ -12,7 +12,7 @@ El sistema debe responder:
 Los datos utilizados son estáticos y se generaron para tamaños de:
 
 ```text
-10, 100, 1000, 5000, 10000 puntos
+5, 10, 100, 1000, 5000, 10000 puntos
 ```
 
 ---
