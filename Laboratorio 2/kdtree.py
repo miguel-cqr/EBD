@@ -67,18 +67,23 @@ def range_search(node, target, radius, axis=0, results=None):
     # Decidir hacia dónde ir
     diff = target[axis] - point[axis]
 
+    if(axis==1):
+        next_axis = 0
+    else:
+        next_axis = 1
+
     # lado cercano
     if diff < 0:
-        range_search(node.left, target, radius, 1-axis, results)
+        range_search(node.left, target, radius, next_axis, results)
     else:
-        range_search(node.right, target, radius, 1-axis, results)
+        range_search(node.right, target, radius, next_axis, results)
 
     # lado lejano (solo si es necesario)
     if abs(diff) <= radius:
         if diff < 0:
-            range_search(node.right, target, radius, 1-axis, results)
+            range_search(node.right, target, radius, next_axis, results)
         else:
-            range_search(node.left, target, radius, 1-axis, results)
+            range_search(node.left, target, radius, next_axis, results)
 
     return results
 
