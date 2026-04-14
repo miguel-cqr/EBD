@@ -37,22 +37,22 @@ def compare_methods(n_points):
     target = [5000, 5000]
     radius = 2000
 
-    # 🔴 Fuerza bruta - rango
+
     start = time.time()
     bf_range_res = brute_force_range(points, target, radius)
     bf_range_time = time.time() - start
 
-    # 🌳 KD-tree - rango
+
     start = time.time()
     kd_range_res = range_search(tree, target, radius)
     kd_range_time = time.time() - start
 
-    # 🔴 Fuerza bruta - NN
+
     start = time.time()
     bf_nn_res = brute_force_nn(points, target)
     bf_nn_time = time.time() - start
 
-    # 🌳 KD-tree - NN
+
     start = time.time()
     kd_nn_res = nearest_neighbor(tree, target)
     kd_nn_time = time.time() - start
