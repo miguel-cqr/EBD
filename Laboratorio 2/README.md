@@ -1,6 +1,6 @@
-# 🌳 KD-Tree para búsqueda espacial en logística
+# KD-Tree para búsqueda espacial en logística
 
-## 📌 Problema
+## Problema
 
 Se simula un sistema de logística con **puntos de entrega representados como coordenadas (x, y)**.
 
@@ -17,13 +17,13 @@ Los datos utilizados son estáticos y se generaron para tamaños de:
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Implementar un **KD-Tree desde cero** y compararlo con un método de **fuerza bruta (listas)** para resolver búsquedas espaciales.
 
 ---
 
-## 🧩 Estructura
+## Estructura
 
 ```
 .
@@ -35,27 +35,27 @@ Implementar un **KD-Tree desde cero** y compararlo con un método de **fuerza br
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
-### 🌳 KD-Tree
+### KD-Tree
 
 * Construcción usando medianas
 * Alternancia de ejes (x, y)
 * Árbol balanceado
 
-### 🔍 Búsquedas
+### Búsquedas
 
 * **Range Search:** puntos dentro de un radio
 * **Nearest Neighbor:** punto más cercano
 
-### 🔴 Fuerza bruta
+### Fuerza bruta
 
 * Recorre todos los puntos
 * Calcula distancias directamente
 
 ---
 
-## 📊 Visualización
+## Visualización
 
 Se implementaron gráficas para:
 
@@ -70,7 +70,7 @@ Se implementaron gráficas para:
 
 ---
 
-## 🧪 Pruebas realizadas
+## Pruebas realizadas
 
 Se probaron ambos métodos con:
 
@@ -80,7 +80,7 @@ Se probaron ambos métodos con:
 
 ---
 
-## 📈 Resultados
+## Resultados
 
 * Para pocos datos (10, 100):
 
