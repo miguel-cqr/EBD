@@ -115,7 +115,6 @@ def visualize_full(points, tree, target, radius):
     min_y = target[1] - radius
     max_y = target[1] + radius
 
-    # 🔥 FILTRAR PUNTOS
     visible_points = [
         p for p in points
         if (min_x <= p[0] <= max_x) and (min_y <= p[1] <= max_y)
@@ -159,9 +158,9 @@ tree = build_tree(x)
 target = [5000, 5000]  #Punto objetivo al que se le encuentra el vecino más cercano y los vecinos dentro del radio
 radius = 500 #Radio para la búsqueda de vecinos
 
-#plot_points(x) 
+plot_points(x) 
 
-#visualize_kdtree(x, tree)
+visualize_kdtree(x, tree)
 
 visualize_search(x, tree, target, radius)
 
