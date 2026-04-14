@@ -75,18 +75,18 @@ Se implementaron gráficas para:
 Se probaron ambos métodos con:
 
 ```text
-10, 100, 1000, 5000, 10000 puntos
+5, 10, 100, 1000, 5000, 10000 puntos
 ```
 
 ---
 
 ## Resultados
 
-* Para pocos datos (10, 100):
+* Para pocos datos (5, 10):
 
-  * Fuerza bruta y KD-Tree tienen tiempos similares
+  * Fuerza bruta y KD-Tree tienen tiempos similares, incluso el procedimiento por fuerza bruta puede llegar a ser más rápido
 
-* Para tamaños medios (1000):
+* Para tamaños medios (100, 1000):
 
   * KD-Tree empieza a ser más eficiente
 
