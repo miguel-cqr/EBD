@@ -6,7 +6,7 @@ def plot_points(points):
     x = [p[0] for p in points]
     y = [p[1] for p in points]
 
-    plt.scatter(x, y)
+    plt.scatter(x, y, s=10)
     plt.title("Puntos generados")
     plt.xlabel("X")
     plt.ylabel("Y")
@@ -45,7 +45,7 @@ def visualize_kdtree(points, tree):
     # dibujar puntos
     x = [p[0] for p in points]
     y = [p[1] for p in points]
-    plt.scatter(x, y)
+    plt.scatter(x, y, s=10)
 
     # límites del espacio
     min_x = min(x)
@@ -79,17 +79,17 @@ def visualize_search(points, tree, target, radius):
     plt.figure()
 
     # todos los puntos
-    plt.scatter(x_all, y_all, label="Puntos")
+    plt.scatter(x_all, y_all,s=10, label="Puntos")
 
     # vecinos en el radio
-    plt.scatter(x_neighbors, y_neighbors, label="Vecinos en radio")
+    plt.scatter(x_neighbors, y_neighbors, s=15,label="Vecinos en radio")
 
     # punto objetivo
-    plt.scatter(target[0], target[1], marker='x', s=100, label="Target")
+    plt.scatter(target[0], target[1], marker='x', s=20, label="Target")
 
     # vecino más cercano
     if nearest:
-        plt.scatter(nearest[0], nearest[1], marker='D', s=100, label="Más cercano")
+        plt.scatter(nearest[0], nearest[1], color='red', s=20, label="Más cercano")
 
     # dibujar círculo del radio
     circle = plt.Circle((target[0], target[1]), radius, fill=False)
@@ -99,7 +99,7 @@ def visualize_search(points, tree, target, radius):
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.legend()
-    plt.axis('equal')  # importante para que el círculo no se vea deformado
+    plt.axis('equal') 
     plt.show()
 
 # Visualización de la búsqueda en radio con zoom al área del radio
@@ -126,19 +126,19 @@ def visualize_full(points, tree, target, radius):
     # puntos visibles
     x_vis = [p[0] for p in visible_points]
     y_vis = [p[1] for p in visible_points]
-    plt.scatter(x_vis, y_vis)
+    plt.scatter(x_vis, y_vis, s=10)
 
     # vecinos
     x_neighbors = [p[0] for p in neighbors]
     y_neighbors = [p[1] for p in neighbors]
-    plt.scatter(x_neighbors, y_neighbors)
+    plt.scatter(x_neighbors, y_neighbors, s=15)
 
     # target
-    plt.scatter(target[0], target[1], marker='x', s=120)
+    plt.scatter(target[0], target[1], marker='x', s=20)
 
     # nearest
     if nearest:
-        plt.scatter(nearest[0], nearest[1], marker='D', s=120)
+        plt.scatter(nearest[0], nearest[1], s=20, color='red')
         plt.plot([target[0], nearest[0]], [target[1], nearest[1]])
 
     # círculo
@@ -153,7 +153,7 @@ def visualize_full(points, tree, target, radius):
     plt.show()
 
 
-x = generate_data(10000)
+x = generate_data(10)
 tree = build_tree(x)
 target = [5000, 5000]  #Punto objetivo al que se le encuentra el vecino más cercano y los vecinos dentro del radio
 radius = 500 #Radio para la búsqueda de vecinos
