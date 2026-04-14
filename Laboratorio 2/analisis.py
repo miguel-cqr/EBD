@@ -65,6 +65,7 @@ def compare_methods(n_points):
 
 print("Comparando métodos con diferentes tamaños de datos...")
 
+compare_methods(5)
 compare_methods(10)
 compare_methods(100)
 compare_methods(1000)

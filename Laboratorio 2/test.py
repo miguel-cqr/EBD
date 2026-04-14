@@ -153,7 +153,7 @@ def visualize_full(points, tree, target, radius):
     plt.show()
 
 
-x = generate_data(10)
+x = generate_data(10000)
 tree = build_tree(x)
 target = [5000, 5000]  #Punto objetivo al que se le encuentra el vecino más cercano y los vecinos dentro del radio
 radius = 500 #Radio para la búsqueda de vecinos

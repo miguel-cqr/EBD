@@ -1,5 +1,6 @@
 import random
 import math
+import statistics
 from operator import itemgetter
 
 random.seed(10000)
