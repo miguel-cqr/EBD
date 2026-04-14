@@ -93,5 +93,4 @@ Se probaron ambos métodos con:
 * Para tamaños grandes (5000, 10000):
 
   * KD-Tree es claramente más rápido
-  * Reduce el número de comparaciones
 
