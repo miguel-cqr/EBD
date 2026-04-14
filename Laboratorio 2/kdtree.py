@@ -25,14 +25,16 @@ def build_tree(x):
 def insert_node(root, list, axis):
     if not list:
         return None
-    list, pos = median(list, axis)
+    list = sorted(list, key=itemgetter(axis))
+    median = statistics.median_low(list)
+    pos = list.index(median)
     if(axis==1):
         next_axis = 0
     else:
         next_axis = 1
-    point = list[pos]
+    
     if root is None:
-        root = Node(point)
+        root = Node(median)
     root.left = insert_node(None, list[0:pos], next_axis)
     root.right = insert_node(None, list[pos+1:], next_axis)
     
@@ -42,7 +44,7 @@ def median(array,axis):
     
     if len(array)>1:
         array = sorted(array, key=itemgetter(axis))
-        middle = int(len(array) / 2)
+        middle = statistics.median_low(array)
     else:
         middle = 0
 
