@@ -3,9 +3,12 @@ import math
 
 random.seed(10000)
 
+
+X_MIN, X_MAX = 0, 50000
+Y_MIN, Y_MAX = 0, 50000
 def generate_data(n):
     return [
-        [random.randint(0, 50000), random.randint(0, 50000)]
+        [random.randint(X_MIN, X_MAX), random.randint(Y_MIN, Y_MAX)]
         for i in range(n)
     ]
 
@@ -19,7 +22,7 @@ class Hoja:
     def __init__(self, punto):
         self.punto = punto
 
-def construir_arbol(puntos, x_min=0, x_max=50000, y_min=0, y_max=50000):
+def construir_arbol(puntos, x_min=X_MIN, x_max=X_MAX, y_min=Y_MIN, y_max=Y_MAX):
     if len(puntos) == 0:
         return None
     if len(puntos) == 1:
@@ -49,7 +52,7 @@ def dist_a_bbox(punto, x_min, x_max, y_min, y_max):
     dy = max(y_min - punto[1], 0, punto[1] - y_max)
     return math.sqrt(dx**2 + dy**2)
 
-def vecino_mas_cercano(nodo, query, x_min=0, x_max=50000, y_min=0, y_max=50000):
+def vecino_mas_cercano(nodo, query, x_min=X_MIN, x_max=X_MAX, y_min=Y_MIN, y_max=Y_MAX):
     if nodo is None:
         return None, float('inf')
     if isinstance(nodo, Hoja):
@@ -81,7 +84,7 @@ def vecino_mas_cercano(nodo, query, x_min=0, x_max=50000, y_min=0, y_max=50000):
 
     return mejor_punto, mejor_dist
 
-def busqueda_radio(nodo, query, radio, x_min=0, x_max=50000, y_min=0, y_max=50000):
+def busqueda_radio(nodo, query, radio, x_min=X_MIN, x_max=X_MAX, y_min=Y_MIN, y_max=Y_MAX):
     if nodo is None:
         return []
     if isinstance(nodo, Hoja):
@@ -112,12 +115,3 @@ arbol = construir_arbol(puntos)
 target = [5000, 5000]
 radio = 500
 
-vecino, dist = vecino_mas_cercano(arbol, target)
-print(f"Vecino más cercano: {vecino} (distancia {dist:.1f})")
-
-vecinos = busqueda_radio(arbol, target, radio)
-print(f"Vecinos en radio {radio}: {len(vecinos)} puntos")
-
-# verificación
-print(f"\n[Fuerza bruta] Más cercano: {min(puntos, key=lambda p: distancia(p, target))}")
-print(f"[Fuerza bruta] En radio: {len([p for p in puntos if distancia(p, target) <= radio])} puntos")
