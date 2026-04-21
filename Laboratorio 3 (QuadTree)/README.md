@@ -28,9 +28,9 @@ Implementar un **Quadtree desde cero** y compararlo con un método de **fuerza b
 ```
 .
 ├── README.md
-├── quadtree.py    # Implementación del árbol y búsquedas
+├── QuadTree.py    # Implementación del árbol y búsquedas
 ├── test.py        # Visualizaciones y pruebas
-├── analisis.py    # Comparación de rendimiento
+├── analisis.py    # Comparación de rendimiento y discusión de resultados
 ```
 
 ---
