@@ -96,6 +96,31 @@ def visualize_full(puntos, arbol, target, radio):
     plt.show()
 
 
+def estadisticas_radio(puntos, arbol, target, radio):
+    print("\n--- Estadísticas búsqueda por radio ---")
+
+    vecinos = busqueda_radio(arbol, target, radio)
+    distancias = [((p[0]-target[0])**2 + (p[1]-target[1])**2)**0.5 for p in vecinos]
+
+    print(f"Radio:                 {radio}")
+    print(f"Target:                {target}")
+    print(f"Vecinos encontrados:   {len(vecinos)} de {len(puntos)} ({100*len(vecinos)/len(puntos):.2f}%)")
+    if distancias:
+        print(f"Distancia promedio:    {sum(distancias)/len(distancias):.2f}")
+        print(f"Distancia mínima:      {min(distancias):.2f}")
+        print(f"Distancia máxima:      {max(distancias):.2f}")
+    else:
+        print("No se encontraron vecinos en el radio.")
+
+def estadisticas_vecino(arbol, target):
+    print("\n--- Estadísticas vecino más cercano ---")
+
+    vecino, dist = vecino_mas_cercano(arbol, target)
+    print(f"Target:                {target}")
+    print(f"Vecino más cercano:    {vecino}")
+    print(f"Distancia:             {dist:.2f}")
+
+
 puntos = generate_data(10000)
 arbol = construir_arbol(puntos)
 target = [25000, 25000]
@@ -105,3 +130,6 @@ plot_points(puntos)
 visualize_quadtree(puntos, arbol)
 visualize_search(puntos, arbol, target, radio)
 visualize_full(puntos, arbol, target, radio)
+
+estadisticas_radio(puntos, arbol, target, radio)
+estadisticas_vecino(arbol, target)
