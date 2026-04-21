@@ -1,6 +1,8 @@
 from QuadTree import *
 import time
 
+N_REPETICIONES = 5
+
 def brute_force_radio(puntos, target, radio):
     resultado = []
     for p in puntos:
@@ -28,22 +30,34 @@ def comparar(n_puntos):
 
     target = [5000, 5000]
     radio = 2000
+    bf_radio_time = 0
+    for _ in range(N_REPETICIONES):
+        start = time.time()
+        brute_force_radio(puntos, target, radio)
+        bf_radio_time += time.time() - start
+    bf_radio_time /= N_REPETICIONES
 
-    start = time.time()
-    brute_force_radio(puntos, target, radio)
-    bf_radio_time = time.time() - start
+    qt_radio_time = 0
+    for _ in range(N_REPETICIONES):
+        start = time.time()
+        busqueda_radio(arbol, target, radio)
+        qt_radio_time += time.time() - start
+    qt_radio_time /= N_REPETICIONES
 
-    start = time.time()
-    busqueda_radio(arbol, target, radio)
-    qt_radio_time = time.time() - start
 
-    start = time.time()
-    brute_force_vecino(puntos, target)
-    bf_nn_time = time.time() - start
+    bf_nn_time = 0
+    for _ in range(N_REPETICIONES):
+        start = time.time()
+        brute_force_vecino(puntos, target)
+        bf_nn_time += time.time() - start
+    bf_nn_time /= N_REPETICIONES
 
-    start = time.time()
-    vecino_mas_cercano(arbol, target)
-    qt_nn_time = time.time() - start
+    qt_nn_time = 0
+    for _ in range(N_REPETICIONES):
+        start = time.time()
+        vecino_mas_cercano(arbol, target)
+        qt_nn_time += time.time() - start
+    qt_nn_time /= N_REPETICIONES
 
     print(f"\n--- {n_puntos} puntos ---")
     print(f"Fuerza bruta radio:       {bf_radio_time:.6f}s")
@@ -51,11 +65,48 @@ def comparar(n_puntos):
     print(f"Fuerza bruta más cercano: {bf_nn_time:.6f}s")
     print(f"Quadtree más cercano:     {qt_nn_time:.6f}s")
 
+    diferencia_radio = bf_radio_time / qt_radio_time
+    diferencia_vecino = bf_nn_time / qt_nn_time
+    return diferencia_radio, diferencia_vecino
+
 print("Comparando fuerza bruta vs quadtree...\n")
 
-comparar(5)
-comparar(10)
-comparar(100)
-comparar(1000)
-comparar(5000)
-comparar(10000)
+diferencias_R=[]
+diferencias_V=[]
+comparaciones = [5, 10, 100, 1000, 5000, 10000]
+
+for n in comparaciones:
+    dr, dv = comparar(n)
+    diferencias_R.append(dr)
+    diferencias_V.append(dv)
+
+
+fbv_rapido=[]
+fbr_rapido=[]
+qdv_rapido=[]
+qdr_rapido=[]
+parecidosr=[]
+parecidosv=[]
+for i in range(len(diferencias_R)):
+    if diferencias_R[i] <= 1 :
+        fbr_rapido.append(comparaciones[i])
+    elif diferencias_R[i] < 10:
+       parecidosr.append(comparaciones[i])
+    else:
+       qdr_rapido.append(comparaciones[i])
+
+    if diferencias_V[i] <= 1:
+        fbv_rapido.append(comparaciones[i])
+    elif diferencias_V[i] < 10:
+        parecidosv.append(comparaciones[i])
+    else:
+        qdv_rapido.append(comparaciones[i])
+    
+print("\nResumen:")
+print(f"Pruebas hechas con {comparaciones} puntos, repitiendo las comparaciones {N_REPETICIONES} veces cada una para promediar los tiempos y que los resultados sean más precisos.")
+print(f"\t-> Quadtree claramente más rápido en radio para: {qdr_rapido} puntos")
+print(f"\t-> Fuerza bruta más rápido en radio para: {fbr_rapido} puntos")
+print(f"\t-> Quadtree claramente más rápido en vecino para: {qdv_rapido} puntos")
+print(f"\t-> Fuerza bruta más rápido en vecino para: {fbv_rapido} puntos")
+print(f"\t-> Resultados parecidos en busqueda por radio (Quadtree comienza a ser más rápido): {parecidosr} puntos")
+print(f"\t-> Resultados parecidos en busqueda por vecino (Quadtree comienza a ser más rápido): {parecidosv} puntos")
